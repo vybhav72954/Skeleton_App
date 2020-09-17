@@ -1,8 +1,35 @@
 from flask import Flask, render_template, redirect, url_for, flash
 from forms import FirstForm, SecondForm
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, template_folder="templates")
+
 app.config['SECRET_KEY'] = 'meof2ms0js4m2f2hczoj'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flaskthapar.db'
+
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    profile_img = db.Column(db.String(20), nullable=False, default='default_photo.jpg')
+    password = db.Column(db.String(60), nullable=False)
+    information = db.relationship('Info', backref='Name', lazy=True)
+    def __repr__(self):
+        return f"User('{self.username}','{self.email}','{self.profile_img}')"
+
+class Info(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Hobby = db.Column(db.String(120), nullable=False)
+    Job = db.Column(db.String(120), nullable=False, default="Unemployed")
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
+    def __repr__(self):
+        return f"Post('{self.Hobby}','{self.Job}')"
+
+
 posts = [
     {
         'Name': 'Vybhav',
