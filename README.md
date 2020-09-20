@@ -1,3 +1,5 @@
 # My Flask App (Skeleton)
 
-#### By Vybhav Cahturvedi
+## By Vybhav Chaturvedi
+
+Will act as a CheckList/Reminder for Hackathons
