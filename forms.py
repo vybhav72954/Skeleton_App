@@ -4,22 +4,24 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class FirstForm(FlaskForm):
     # TODO Change the Screen Outputs
-    username = StringField('Name',
+    username = StringField('Whats Your Name???',
                             validators=[DataRequired(), Length(min=2, max=10)])
-    email = StringField('Mail likh Bhai',
+    nickname = StringField('What Sh ould I call You??? (P.S.-Nickname?)',
+                           validators=[ Length(min=2, max=10)])
+    email = StringField('Your E-Mail',
                             validators=[DataRequired(), Email()])
-    password = PasswordField('Password h, Keep it Strong',
+    password = PasswordField('Password, Keep it Strong ;)',
                             validators=[DataRequired()])
-    confirm_password = PasswordField('Check if it is Strong',
+    confirm_password = PasswordField('Check if it\'s Strong',
                             validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Bhar du Bhai?')
+    submit = SubmitField('Recheck n Click')
 
 class SecondForm(FlaskForm):
     # TODO Change the Screen Outputs
-    email = StringField('Mail likh Bhai',
+    email = StringField('E-Mail',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('PassWord Yad h na',
+    password = PasswordField('Password (Secret)',
                              validators=[DataRequired()])
-    remember = BooleanField('Yaad rkhu?')
-    submit = SubmitField('Pakka na Bhai')
+    remember = BooleanField('Shall I remember these?')
+    submit = SubmitField('Let\'s Go')
 
