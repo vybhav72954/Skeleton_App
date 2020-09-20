@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
+    <h3>Hey Welcome Here, How are You?</h3>
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
+
                 <legend class="border-bottom mb-4">
-                    AA JAAAAA
+                    If you are registering, Do get in Touch me.
                 </legend>
                 <!-- TODO: Add Status Check and Error Check in From-->
 
@@ -33,7 +35,7 @@
     </div>
     <div class="border-top pt-3">
         <small class="text-muted">
-            Galti se aa gye kya??? <a class="ml-2" href="{{ url_for('login') }}">Sign In kro yar</a>
+            Already Registered? <a class="ml-2" href="{{ url_for('login') }}"> Please Click Here!!! </a>
         </small>
 
     </div>
