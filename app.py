@@ -24,8 +24,6 @@ class Info(db.Model):
     Hobby = db.Column(db.String(120), nullable=False)
     Job = db.Column(db.String(120), nullable=False, default="Unemployed")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-
     def __repr__(self):
         return f"Post('{self.Hobby}','{self.Job}')"
 
@@ -55,7 +53,7 @@ posts = [
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/about')
 def About():
